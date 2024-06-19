@@ -45,8 +45,8 @@ class SentryTracingLink extends Link {
     final sentryType = operationType?.sentryType;
 
     final transaction = _startSpan(
-      'GraphQL: "${request.operation.operationName ?? 'unnamed'}" $sentryType',
       sentryOperation,
+      'GraphQL: "${request.operation.operationName ?? 'unnamed'}" $sentryType',
       shouldStartTransaction,
     );
     return forward!(request).transform(StreamTransformer.fromHandlers(
